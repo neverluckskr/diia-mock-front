@@ -137,6 +137,11 @@
 		4937CBAE2D95A7C00014D2BC /* FeedNewsDetailsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4937CB992D95A7C00014D2BC /* FeedNewsDetailsModule.swift */; };
 		4937CBB02D95AC070014D2BC /* DiiaIdSigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4937CBAF2D95AC050014D2BC /* DiiaIdSigner.swift */; };
 		4937CBB22D95AE5D0014D2BC /* PaymentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4937CBB12D95AE4B0014D2BC /* PaymentManager.swift */; };
+		4940E53B2EF99D7C002471A1 /* PushNotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4940E53A2EF99D6E002471A1 /* PushNotificationsService.swift */; };
+		4940E53D2EF99E79002471A1 /* PushRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4940E53C2EF99E6A002471A1 /* PushRouteBuilder.swift */; };
+		4940E5422EF99F90002471A1 /* DocumentsDriverLicensePushRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4940E5412EF99F7F002471A1 /* DocumentsDriverLicensePushRouter.swift */; };
+		4940E5442EF99FC2002471A1 /* PushNotificationPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4940E5432EF99FC2002471A1 /* PushNotificationPayload.swift */; };
+		4940E5462EF9A0B6002471A1 /* CriminalRecordCertificatePushRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4940E5452EF9A0B2002471A1 /* CriminalRecordCertificatePushRouter.swift */; };
 		4A63C8102E9D21F60019BE7E /* ServiceActiveTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A63C7F22E9D21F60019BE7E /* ServiceActiveTableCell.xib */; };
 		4A63C8112E9D21F60019BE7E /* ServiceInactiveTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A63C7F42E9D21F60019BE7E /* ServiceInactiveTableCell.xib */; };
 		4A63C8122E9D21F60019BE7E /* PublicServiceSearchTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A63C8042E9D21F60019BE7E /* PublicServiceSearchTableCell.xib */; };
@@ -355,6 +360,11 @@
 		4937CB9C2D95A7C00014D2BC /* FeedNewsDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedNewsDetailsViewController.xib; sourceTree = "<group>"; };
 		4937CBAF2D95AC050014D2BC /* DiiaIdSigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiiaIdSigner.swift; sourceTree = "<group>"; };
 		4937CBB12D95AE4B0014D2BC /* PaymentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentManager.swift; sourceTree = "<group>"; };
+		4940E53A2EF99D6E002471A1 /* PushNotificationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationsService.swift; sourceTree = "<group>"; };
+		4940E53C2EF99E6A002471A1 /* PushRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushRouteBuilder.swift; sourceTree = "<group>"; };
+		4940E5412EF99F7F002471A1 /* DocumentsDriverLicensePushRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsDriverLicensePushRouter.swift; sourceTree = "<group>"; };
+		4940E5432EF99FC2002471A1 /* PushNotificationPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationPayload.swift; sourceTree = "<group>"; };
+		4940E5452EF9A0B2002471A1 /* CriminalRecordCertificatePushRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriminalRecordCertificatePushRouter.swift; sourceTree = "<group>"; };
 		4A63C7DF2E9D21F60019BE7E /* PublicServiceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicServiceResponse.swift; sourceTree = "<group>"; };
 		4A63C7E02E9D21F60019BE7E /* PublicServiceSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicServiceSection.swift; sourceTree = "<group>"; };
 		4A63C7E22E9D21F60019BE7E /* PublicServiceOpenerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicServiceOpenerProtocol.swift; sourceTree = "<group>"; };
@@ -579,7 +589,6 @@
 				42F9246B29FBF6210072DDC1 /* Networking */,
 				42F922C929FBF61B0072DDC1 /* UI */,
 				42F922E429FBF61B0072DDC1 /* Extensions */,
-				42F9231429FBF61B0072DDC1 /* DeepLinks */,
 				42F9232B29FBF61B0072DDC1 /* Views */,
 				42F9237A29FBF61B0072DDC1 /* Services */,
 				42F9239229FBF61B0072DDC1 /* Utility */,
@@ -652,11 +661,13 @@
 		42F9237A29FBF61B0072DDC1 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				42F9237F29FBF61B0072DDC1 /* StoreHelper.swift */,
+				42F9238629FBF61B0072DDC1 /* AccessCheckers */,
+				42F9231429FBF61B0072DDC1 /* DeepLinks */,
+				4940E5392EF99D4F002471A1 /* PushNotifications */,
 				42F9238229FBF61B0072DDC1 /* MobileUIDGenerator.swift */,
+				42F9237F29FBF61B0072DDC1 /* StoreHelper.swift */,
 				42F9238429FBF61B0072DDC1 /* StartScenarioService.swift */,
 				42F9238529FBF61B0072DDC1 /* ScreenBrightnessHelper.swift */,
-				42F9238629FBF61B0072DDC1 /* AccessCheckers */,
 				7BE198E92B14FBDF008C9FAC /* TemplateActionFactory.swift */,
 				42F9238C29FBF61B0072DDC1 /* MigrationService.swift */,
 				7BE199512B16E5E1008C9FAC /* ServicesProvider.swift */,
@@ -1053,6 +1064,26 @@
 				4937CB9D2D95A7C00014D2BC /* FeedNewsDetails */,
 			);
 			path = Feed;
+			sourceTree = "<group>";
+		};
+		4940E5392EF99D4F002471A1 /* PushNotifications */ = {
+			isa = PBXGroup;
+			children = (
+				4940E53E2EF99F16002471A1 /* Routers */,
+				4940E53A2EF99D6E002471A1 /* PushNotificationsService.swift */,
+				4940E53C2EF99E6A002471A1 /* PushRouteBuilder.swift */,
+				4940E5432EF99FC2002471A1 /* PushNotificationPayload.swift */,
+			);
+			path = PushNotifications;
+			sourceTree = "<group>";
+		};
+		4940E53E2EF99F16002471A1 /* Routers */ = {
+			isa = PBXGroup;
+			children = (
+				4940E5412EF99F7F002471A1 /* DocumentsDriverLicensePushRouter.swift */,
+				4940E5452EF9A0B2002471A1 /* CriminalRecordCertificatePushRouter.swift */,
+			);
+			path = Routers;
 			sourceTree = "<group>";
 		};
 		4A63C7E12E9D21F60019BE7E /* Models */ = {
@@ -1598,10 +1629,12 @@
 				33825E322B4BEF9F00C5801A /* DriverLicenseViewModelFactory.swift in Sources */,
 				3329AF7E2B2A5201004B8517 /* AuthorizationApiClient+Extension.swift in Sources */,
 				42F9337129FBF7D30072DDC1 /* StartAuthorizationViewController.swift in Sources */,
+				4940E5462EF9A0B6002471A1 /* CriminalRecordCertificatePushRouter.swift in Sources */,
 				42F931DE29FBF7D20072DDC1 /* SplashScreenModule.swift in Sources */,
 				7B7693CA2B7AE63E0007A89F /* SharingDocsAPIClient.swift in Sources */,
 				42F9242E29FBF61B0072DDC1 /* RoundButton.swift in Sources */,
 				42F931DF29FBF7D20072DDC1 /* SplashScreenViewController.swift in Sources */,
+				4940E53D2EF99E79002471A1 /* PushRouteBuilder.swift in Sources */,
 				7BE199562B16E753008C9FAC /* LocalizationHelper.swift in Sources */,
 				42F9336E29FBF7D30072DDC1 /* StartAuthorizationModule.swift in Sources */,
 				42F9325629FBF7D20072DDC1 /* SettingsManager.swift in Sources */,
@@ -1697,6 +1730,7 @@
 				42F9310829FBF7D10072DDC1 /* QRCodeScannerModule.swift in Sources */,
 				7B65C5E32B03960F0018D510 /* PSCriminalRecordExtractRoute.swift in Sources */,
 				42F9325929FBF7D20072DDC1 /* MenuPresenter.swift in Sources */,
+				4940E53B2EF99D7C002471A1 /* PushNotificationsService.swift in Sources */,
 				42F9310B29FBF7D10072DDC1 /* QRCodeScannerViewController.swift in Sources */,
 				7BE1993C2B16DB2D008C9FAC /* DocumentsReorderingPresenter.swift in Sources */,
 				7BE199642B17C230008C9FAC /* FaqOpener.swift in Sources */,
@@ -1706,6 +1740,7 @@
 				7BE1994B2B16E310008C9FAC /* DashBorderedView.swift in Sources */,
 				7B7693C62B7AE0380007A89F /* DSImageNameResolver.swift in Sources */,
 				42F9339C29FBF7D30072DDC1 /* MainTabAction.swift in Sources */,
+				4940E5442EF99FC2002471A1 /* PushNotificationPayload.swift in Sources */,
 				42F9245329FBF61B0072DDC1 /* MigrationService.swift in Sources */,
 				7BE199522B16E5E1008C9FAC /* ServicesProvider.swift in Sources */,
 				42F922C429FBF4C10072DDC1 /* AppRouter.swift in Sources */,
@@ -1718,6 +1753,7 @@
 				7B7693E72B7C7E230007A89F /* AuthorizationStateHandler.swift in Sources */,
 				42F9339B29FBF7D30072DDC1 /* MainTabBarModule.swift in Sources */,
 				4A63C8152E9D21F60019BE7E /* PublicServiceCategoriesListModule.swift in Sources */,
+				4940E5422EF99F90002471A1 /* DocumentsDriverLicensePushRouter.swift in Sources */,
 				4A63C8162E9D21F60019BE7E /* ServicesSectionDividerCell.swift in Sources */,
 				4A63C8172E9D21F60019BE7E /* PublicServiceSearchViewController.swift in Sources */,
 				4A63C8182E9D21F60019BE7E /* PublicServicesStorage.swift in Sources */,
@@ -1907,7 +1943,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2050;
+				CURRENT_PROJECT_VERSION = 2060;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DiiaOpenSource/Info.plist;
@@ -1923,7 +1959,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.20.0;
+				MARKETING_VERSION = 4.25.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ua.gov.diia.opensource.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1942,7 +1978,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2050;
+				CURRENT_PROJECT_VERSION = 2060;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DiiaOpenSource/Info.plist;
@@ -1958,7 +1994,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.20.0;
+				MARKETING_VERSION = 4.25.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ua.gov.diia.opensource.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2008,7 +2044,7 @@
 			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
 			requirement = {
 				kind = exactVersion;
-				version = 4.2.0;
+				version = 4.6.0;
 			};
 		};
 		42F93A3E29FFD11B0072DDC1 /* XCRemoteSwiftPackageReference "RNCryptor" */ = {

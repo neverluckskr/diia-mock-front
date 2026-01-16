@@ -8,6 +8,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private var router: AppRouter!
     private var stubImage: UIImageView!
     private let deeplinkManager = DeepLinkManager()
+    private lazy var pushNotificationService: PushNotificationsService = {
+        return .init(notificationCenter: UNUserNotificationCenter.current())
+    }()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         ReachabilityHelper.shared.startNetworkReachabilityObserver()
@@ -22,7 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // AppConfigurator.configureApp should be called before creating any apiClient with NetworkConfiguration.default.session in order to set the interceptor first
         AppConfigurator.configureApp()
-        
+        pushNotificationService.router = router
+
         UIApplication.shared.registerForRemoteNotifications()
         
         window.rootViewController = SplashScreenModule(onFinish: { [weak self] in
