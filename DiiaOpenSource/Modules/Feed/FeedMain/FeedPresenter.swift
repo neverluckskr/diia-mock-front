@@ -79,6 +79,10 @@ final class FeedPresenter: FeedAction {
     
     // MARK: - API
     @objc private func fetchFeedScreen() {
+        if MockConfig.isMockAuthEnabled {
+            view.setLoadingState(.ready)
+            return
+        }
         if isFetching { return }
         isFetching = true
         view.setLoadingState(.loading)
