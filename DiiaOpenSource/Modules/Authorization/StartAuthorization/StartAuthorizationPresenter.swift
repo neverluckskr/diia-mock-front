@@ -50,6 +50,24 @@ final class StartAuthorizationPresenter: StartAuthorizationAction {
     
     // MARK: - API Methods
     private func getAuthMethods() {
+        if MockConfig.isMockAuthEnabled {
+            let viewModel = DSListItemViewModel(
+                leftBigIcon: AuthMethod.bankId.icon,
+                title: AuthMethod.bankId.label ?? "BankID",
+                onClick: { [weak self] in self?.login(processId: "mock_process_id") }
+            )
+            viewModel.accessibilityLabel = AuthMethod.bankId.accessibilityLabel
+            view.setAuthMethods(with: DSListViewModel(
+                title: R.Strings.authorization_methods_title.localized(),
+                items: [viewModel])
+            )
+            view.setLoadingState(.ready)
+            return
+        }
+        realGetAuthMethods()
+    }
+
+    private func realGetAuthMethods() {
         view.setLoadingState(.loading)
         apiClient
             .verificationAuthMethods(flow: VerificationFlow.authorization, processId: nil)
@@ -65,7 +83,7 @@ final class StartAuthorizationPresenter: StartAuthorizationAction {
                         error: .init(networkError: error),
                         with: { [weak self] in
                             guard let self = self else { return }
-                            self.getAuthMethods()
+                            self.realGetAuthMethods()
                         },
                         didRetry: false,
                         in: view,
@@ -75,8 +93,17 @@ final class StartAuthorizationPresenter: StartAuthorizationAction {
                 }
             }.dispose(in: bag)
     }
-    
+
     private func login(processId: String) {
+        if MockConfig.isMockAuthEnabled {
+            AuthorizationStorage(storage: StoreHelper.instance).saveAuthToken(MockConfig.fakeToken)
+            createPincode()
+            return
+        }
+        realLogin(processId: processId)
+    }
+
+    private func realLogin(processId: String) {
         ServicesProvider.shared.authService.userLogin(in: view, processId: processId) { [weak self] error in
             if error == nil {
                 self?.createPincode()

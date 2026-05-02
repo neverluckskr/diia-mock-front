@@ -1,0 +1,57 @@
+name: Build IPA
+
+on:
+  workflow_dispatch:  # запуск вручную кнопкой на GitHub
+
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_16.2.app
+
+      - name: Resolve SPM dependencies
+        run: |
+          xcodebuild -resolvePackageDependencies \
+            -project DiiaOpenSource.xcodeproj \
+            -scheme DiiaOpenSource \
+            -clonedSourcePackagesDirPath SourcePackages
+
+      - name: Build Archive
+        run: |
+          xcodebuild archive \
+            -project DiiaOpenSource.xcodeproj \
+            -scheme DiiaOpenSource \
+            -configuration Debug \
+            -archivePath build/DiiaOpenSource.xcarchive \
+            -clonedSourcePackagesDirPath SourcePackages \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO \
+            AD_HOC_CODE_SIGNING_ALLOWED=YES \
+            ONLY_ACTIVE_ARCH=NO \
+            | xcpretty || true
+
+      - name: Export IPA (unsigned)
+        run: |
+          mkdir -p build/ipa
+
+          # Упаковываем .app из архива в .ipa вручную (без подписи)
+          APP_PATH=$(find build/DiiaOpenSource.xcarchive/Products -name "*.app" | head -1)
+          mkdir -p build/ipa/Payload
+          cp -r "$APP_PATH" build/ipa/Payload/
+          cd build/ipa
+          zip -r ../DiiaOpenSource.ipa Payload
+          cd ../..
+
+      - name: Upload IPA artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: DiiaOpenSource-ipa
+          path: build/DiiaOpenSource.ipa
+          retention-days: 7

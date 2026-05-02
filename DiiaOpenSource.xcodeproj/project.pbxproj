@@ -230,6 +230,7 @@
 		7BE1994E2B16E393008C9FAC /* DocType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE1994D2B16E393008C9FAC /* DocType.swift */; };
 		7BE199502B16E543008C9FAC /* DocumentsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE1994F2B16E543008C9FAC /* DocumentsResponse.swift */; };
 		7BE199522B16E5E1008C9FAC /* ServicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE199512B16E5E1008C9FAC /* ServicesProvider.swift */; };
+		7BE199532B16E5E1008C9FAC /* MockConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE199542B16E5E1008C9FAC /* MockConfig.swift */; };
 		7BE199562B16E753008C9FAC /* LocalizationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE199552B16E753008C9FAC /* LocalizationHelper.swift */; };
 		7BE199642B17C230008C9FAC /* FaqOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE199632B17C230008C9FAC /* FaqOpener.swift */; };
 		7BE199672B17C319008C9FAC /* DriverReplacementStubModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE199662B17C319008C9FAC /* DriverReplacementStubModule.swift */; };
@@ -451,6 +452,7 @@
 		7BE1994D2B16E393008C9FAC /* DocType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocType.swift; sourceTree = "<group>"; };
 		7BE1994F2B16E543008C9FAC /* DocumentsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsResponse.swift; sourceTree = "<group>"; };
 		7BE199512B16E5E1008C9FAC /* ServicesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesProvider.swift; sourceTree = "<group>"; };
+		7BE199542B16E5E1008C9FAC /* MockConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockConfig.swift; sourceTree = "<group>"; };
 		7BE199552B16E753008C9FAC /* LocalizationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationHelper.swift; sourceTree = "<group>"; };
 		7BE199632B17C230008C9FAC /* FaqOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaqOpener.swift; sourceTree = "<group>"; };
 		7BE199662B17C319008C9FAC /* DriverReplacementStubModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverReplacementStubModule.swift; sourceTree = "<group>"; };
@@ -671,6 +673,7 @@
 				7BE198E92B14FBDF008C9FAC /* TemplateActionFactory.swift */,
 				42F9238C29FBF61B0072DDC1 /* MigrationService.swift */,
 				7BE199512B16E5E1008C9FAC /* ServicesProvider.swift */,
+				7BE199542B16E5E1008C9FAC /* MockConfig.swift */,
 				7BE199552B16E753008C9FAC /* LocalizationHelper.swift */,
 				7B0AACF42B8C60D8007E00B8 /* AnalyticsProvider.swift */,
 			);
@@ -1743,6 +1746,7 @@
 				4940E5442EF99FC2002471A1 /* PushNotificationPayload.swift in Sources */,
 				42F9245329FBF61B0072DDC1 /* MigrationService.swift in Sources */,
 				7BE199522B16E5E1008C9FAC /* ServicesProvider.swift in Sources */,
+				7BE199532B16E5E1008C9FAC /* MockConfig.swift in Sources */,
 				42F922C429FBF4C10072DDC1 /* AppRouter.swift in Sources */,
 				42F9244C29FBF61B0072DDC1 /* StartScenarioService.swift in Sources */,
 				4937CBB02D95AC070014D2BC /* DiiaIdSigner.swift in Sources */,

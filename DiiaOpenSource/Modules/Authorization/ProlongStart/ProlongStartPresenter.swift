@@ -39,9 +39,19 @@ final class ProlongStartPresenter {
 // MARK: - ProlongStartAction
 extension ProlongStartPresenter: ProlongStartAction {
     func identifyClicked() {
+        if MockConfig.isMockAuthEnabled {
+            AuthorizationStorage(storage: StoreHelper.instance).saveAuthToken(MockConfig.fakeToken)
+            view.close()
+            completionHandler()
+            return
+        }
+        realIdentifyClicked()
+    }
+
+    private func realIdentifyClicked() {
         verificationService.verifyUser(for: VerificationFlow.prolong, in: view) { [weak self] result in
             guard let self = self else { return }
-            
+
             switch result {
             case .success(let processId):
                 self.prolong(processId: processId)
