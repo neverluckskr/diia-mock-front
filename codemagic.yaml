@@ -1,0 +1,40 @@
+workflows:
+  ios-unsigned-ipa:
+    name: Build Unsigned IPA
+    max_build_duration: 60
+    instance_type: mac_mini_m1
+
+    environment:
+      xcode: 16.2
+
+    scripts:
+      - name: Resolve SPM dependencies
+        script: |
+          xcodebuild -resolvePackageDependencies \
+            -project DiiaOpenSource.xcodeproj \
+            -scheme DiiaOpenSource \
+            -clonedSourcePackagesDirPath SourcePackages
+
+      - name: Build Archive (no signing)
+        script: |
+          xcodebuild archive \
+            -project DiiaOpenSource.xcodeproj \
+            -scheme DiiaOpenSource \
+            -configuration Debug \
+            -archivePath build/DiiaOpenSource.xcarchive \
+            -clonedSourcePackagesDirPath SourcePackages \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO \
+            ONLY_ACTIVE_ARCH=NO
+
+      - name: Package IPA (unsigned)
+        script: |
+          APP_PATH=$(find build/DiiaOpenSource.xcarchive/Products -name "*.app" | head -1)
+          mkdir -p build/Payload
+          cp -r "$APP_PATH" build/Payload/
+          cd build
+          zip -r DiiaOpenSource.ipa Payload
+
+    artifacts:
+      - build/DiiaOpenSource.ipa
