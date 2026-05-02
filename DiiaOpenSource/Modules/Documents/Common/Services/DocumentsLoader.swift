@@ -141,6 +141,9 @@ class DocumentsLoader: NSObject, DocumentsLoaderProtocol {
     }
     
     func saveDocs(documentsResponse: DocumentsResponse) {
+        if let data = try? JSONEncoder().encode(documentsResponse) {
+            MockResponseLogger.saveData(data, filename: "mock_documents.json")
+        }
         let driverLicense: DSFullDocumentModel? = storeHelper.getValue(forKey: .driverLicense)
         saveDoc(documentsResponse.driverLicense?.withLocalization(shareLocalization: driverLicense?.data.first?.shareLocalization ?? .ua),
                 type: DSFullDocumentModel.self,
