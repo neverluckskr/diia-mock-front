@@ -96,7 +96,8 @@ final class StartAuthorizationPresenter: StartAuthorizationAction {
 
     private func login(processId: String) {
         if MockConfig.isMockAuthEnabled {
-            AuthorizationStorage(storage: StoreHelper.instance).saveAuthToken(MockConfig.fakeToken)
+            let token: String? = MockConfig.fakeToken
+            StoreHelper.instance.save(token, type: String?.self, forKey: .authToken)
             createPincode()
             return
         }

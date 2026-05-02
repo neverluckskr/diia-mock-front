@@ -40,7 +40,8 @@ final class ProlongStartPresenter {
 extension ProlongStartPresenter: ProlongStartAction {
     func identifyClicked() {
         if MockConfig.isMockAuthEnabled {
-            AuthorizationStorage(storage: StoreHelper.instance).saveAuthToken(MockConfig.fakeToken)
+            let token: String? = MockConfig.fakeToken
+            StoreHelper.instance.save(token, type: String?.self, forKey: .authToken)
             view.close()
             completionHandler()
             return
