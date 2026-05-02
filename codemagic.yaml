@@ -8,6 +8,9 @@ workflows:
       xcode: latest
 
     scripts:
+      - name: Install SwiftLint
+        script: brew install swiftlint
+
       - name: Resolve SPM dependencies
         script: |
           xcodebuild -resolvePackageDependencies \
