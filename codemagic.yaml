@@ -29,7 +29,9 @@ workflows:
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGNING_ALLOWED=NO \
-            ONLY_ACTIVE_ARCH=NO
+            ONLY_ACTIVE_ARCH=NO \
+            SWIFT_VERSION=5 \
+            SWIFT_STRICT_CONCURRENCY=minimal
 
       - name: Package IPA (unsigned)
         script: |
