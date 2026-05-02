@@ -5,7 +5,7 @@ workflows:
     instance_type: mac_mini_m1
 
     environment:
-      xcode: 16.2
+      xcode: 15.4
 
     scripts:
       - name: Resolve SPM dependencies
